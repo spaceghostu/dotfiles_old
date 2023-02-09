@@ -43,7 +43,7 @@
     layout_mode: Tag,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Alacritty", value: "alacritty", x: 860, y: 390, height: 300, width: 200),
+        (name: "Kitty", value: "kitty", x: 860, y: 390, height: 300, width: 200),
     ],
     window_rules: [],
     disable_current_tag_swap: false,
@@ -55,9 +55,10 @@
     sloppy_mouse_follows_focus: true,
     auto_derive_workspaces: true,
     keybind: [
+        (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "p")
         (command: Execute, value: "dmenu_run", modifier: ["modkey"], key: "p"),
-        (command: Execute, value: "konsole", modifier: ["modkey", "Shift"], key: "Return"),
-        (command: CloseWindow, value: "", modifier: ["modkey", "Shift"], key: "q"),
+        (command: Execute, value: "kitty", modifier: ["modkey"], key: "Return"),
+        (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
         (command: Execute, value: "loginctl kill-session $XDG_SESSION_ID", modifier: ["modkey", "Shift"], key: "x"),
         (command: Execute, value: "slock", modifier: ["modkey", "Control"], key: "l"),
