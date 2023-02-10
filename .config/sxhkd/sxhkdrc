@@ -1,0 +1,11 @@
+super + o
+    google-chrome-stable --profile-directory=Default
+
+super + shift + o
+    google-chrome-stable --profile-directory="Profile 1"
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + t
+    kitty
