@@ -4,6 +4,13 @@
     (music)
     (sidestuff)))
 
+(defwidget _buttons []
+  (box :class "btns-box" :spacing 5
+    :vexpand true :hexpand true
+    :valign "end" :halign "end"
+    :space-evenly false
+    (button :onclick "thunar &" "thunar")))
+
 (defwidget bar1 []
   (centerbox :orientation "h"
     (workspaces)
@@ -12,6 +19,7 @@
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (_buttons)
     (dotfiles)
     (metric :label "vol"
       :value volume
@@ -107,13 +115,3 @@
   :anchor "top center")
   :reserve (struts :side "top" :distance "25px")
   (bar))
-
-(defwidget _buttons [shutdown shutdown_icon reboot
-  reboot_icon logout logout_icon]
-  (box :class "btns-box" :spacing 5
-    :vexpand true :hexpand true
-    :valign "end" :halign "end"
-    :space-evenly false
-    (button :onclick shutdown shutdown_icon)
-    (button :onclick reboot reboot_icon)
-    (button :onclick logout logout_icon)))
