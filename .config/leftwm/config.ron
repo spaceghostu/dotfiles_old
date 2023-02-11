@@ -43,7 +43,7 @@
     layout_mode: Tag,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Kitty", value: "kitty", x: 860, y: 390, height: 300, width: 200),
+        (name: "Kitty", value: "kitty", x: 860, y: 390, height: 300, width: 300),
     ],
     window_rules: [],
     disable_current_tag_swap: false,
@@ -55,8 +55,8 @@
     sloppy_mouse_follows_focus: true,
     auto_derive_workspaces: true,
     keybind: [
-        (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "p")
-        (command: Execute, value: "dmenu_run", modifier: ["modkey"], key: "p"),
+        (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "p"),
+        (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "kitty", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),
@@ -79,8 +79,8 @@
         (command: FocusWindowDown, value: "", modifier: ["modkey"], key: "Down"),
         (command: NextLayout, value: "", modifier: ["modkey", "Control"], key: "Up"),
         (command: PreviousLayout, value: "", modifier: ["modkey", "Control"], key: "Down"),
-        (command: FocusWorkspaceNext, value: "", modifier: ["modkey"], key: "Right"),
-        (command: FocusWorkspacePrevious, value: "", modifier: ["modkey"], key: "Left"),
+        (command: FocusNextTag, value: "", modifier: ["modkey"], key: "Right"),
+        (command: FocusPreviousTag, value: "", modifier: ["modkey"], key: "Left"),
         (command: GotoTag, value: "1", modifier: ["modkey"], key: "1"),
         (command: GotoTag, value: "2", modifier: ["modkey"], key: "2"),
         (command: GotoTag, value: "3", modifier: ["modkey"], key: "3"),
