@@ -1,0 +1,1 @@
+GIT_WORK_TREE=~ GIT_DIR=/home/calvin/dotfiles git status --ahead-behind | grep ahead | awk '{print $8}'
