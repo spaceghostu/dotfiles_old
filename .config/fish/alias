@@ -1,0 +1,17 @@
+
+
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+alias dots="GIT_WORK_TREE=~ GIT_DIR=/home/calvin/dotfiles"
+alias dgit="dots git"
+alias dstatus="dots git status"
+alias dadd="dots git add -f"
+alias dcommit="dots git commit -m"
+alias dpush="dots git push"
+alias dcode="dots code ~/.config"
+
+alias gs-rhw="GIT_WORK_TREE=/home/calvin/dev/react-heardigits-widget GIT_DIR=/home/calvin/dev/react-heardigits-widget/.git git status"
+
+alias xclip="xclip -selection clipboard"
