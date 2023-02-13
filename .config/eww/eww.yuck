@@ -1,6 +1,18 @@
 (defwidget bar []
   (centerbox :orientation "h"
-    (workspaces)
+    :space-evenly false
+    (leftside
+      :class "leftside"
+      (ws-layout-0))
+    (music)
+    (sidestuff)))
+
+(defwidget bar1 []
+  (centerbox :orientation "h"
+    :space-evenly false
+    (leftside
+      :class "leftside"
+      (ws-layout-1))
     (music)
     (sidestuff)))
 
@@ -11,26 +23,48 @@
     :space-evenly false
     (button :onclick "thunar &" "thunar")))
 
-(defwidget bar1 []
-  (centerbox :orientation "h"
+
+(defwidget leftside [class]
+  (box :class class :orientation "h" :space-evenly false :halign "start"
     (workspaces)
-    (music)
-    (sidestuff)))
+    (children)))
+
 
 (defwidget sidestuff []
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (_buttons)
+    ; (_buttons)
     (dotfiles)
-    (metric :label "vol"
+    (metric :label "🔊"
       :value volume
     :onchange "amixer -D default sset Master {}%")
-    (metric :label "cpu"
+    (metric :label ""
       :value '${EWW_RAM.used_mem_perc}'
     :onchange "")
-    (metric :label "mem"
+    (metric :label ""
       :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
     :onchange "")
     (time)))
+
+
+(deflisten workspace-layout-1 'leftwm-state -w 1 -s "{{workspace.layout}}"')
+(defwidget ws-layout-1 []
+  (box
+    :class "layout"
+    :halign "start"
+    (eventbox :onscroll "sh ./scripts/layoutscroll {}" :onclick "leftwm-command \"SetLayout MainAndVertStack\""
+    {workspace-layout-1})
+  )
+)
+(deflisten workspace-layout-0 'leftwm-state -w 0 -s "{{workspace.layout}}"')
+(defwidget ws-layout-0 []
+  (box
+    :class "layout"
+    :halign "start"
+    (eventbox :onscroll "sh ./scripts/layoutscroll {}" :onclick "leftwm-command \"SetLayout MainAndVertStack\""
+    {workspace-layout-0})
+  )
+)
+
 
 ; eww is natively able to parse the JSON output of `leftwm-state`
 ; since eww also has the ability of `for` loops there is no need for a `liquid` template anymore
@@ -44,11 +78,12 @@
     (box
       (for tag in '${wmstate.workspaces[0].tags}'
         (button
-          :class {tag.mine ? "ws-button-mine" :
+          :class {tag.focused ? "ws-button-focused" :
           tag.visible ? "ws-button-visible" :
           tag.urgent ? "ws-button-urgent" :
           tag.busy ? "ws-button-busy" : "ws-button"}
           :onclick "leftwm-command \"SendWorkspaceToTag 0 ${tag.index}\""
+          :onrightclick "leftwm-command \"SendWorkspaceToTag 1 ${tag.index}\""
         "${tag.name}")))))
 
 (defwidget music []
@@ -114,4 +149,4 @@
     :height "10px"
   :anchor "top center")
   :reserve (struts :side "top" :distance "25px")
-  (bar))
+  (bar1))
