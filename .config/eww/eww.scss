@@ -1,13 +1,14 @@
-$primary: #79afd2;
-$primary-dark: #254a49;
+$primary: #d2d8d9;
+$primary-dark: #2a7fac;
 $primary-dark-contrast: #c9ddec;
-$accent-contrast: #eeebdf;
-$accent: #796f48;
 
-$bg: #121d25;
-$bg-lighter-contrast: #e1e7ee;
-$bg-lighter: #283a47;
-$bg-darker: #060a0c;
+$accent-contrast: rgba(0, 0, 0, 0.8);
+$accent: #ece3a8;
+
+$bg: #2b2c2e;
+$bg-lighter-contrast: #e3e8ed;
+$bg-darker: #181a1a;
+$bg-lighter: #7c8a8f;
 
 * {
   all: unset;
@@ -65,7 +66,7 @@ $bg-darker: #060a0c;
 }
 .time {
   font-weight: bold;
-  background-color: $bg-lighter;
+  background-color: $bg-darker;
   color: #fff;
   padding-left: 5px;
   padding-right: 5px;
@@ -87,12 +88,12 @@ $bg-darker: #060a0c;
   background-color: $accent;
 }
 .ws-button-visible {
-  color: $primary;
-  background-color: $bg-lighter;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: #5795b6;
 }
 .ws-button-urgent {
   color: red;
-  background-color: $bg-lighter;
+  background-color: $bg-darker;
 }
 .ws-button-busy {
   color: $primary;
@@ -119,6 +120,6 @@ $bg-darker: #060a0c;
 .layout {
   padding-left: 10px;
   padding-right: 10px;
-  background-color:  $bg-lighter;
-  color: $bg-lighter-contrast;
+  background-color:  #709e99;
+  color: rgba(0, 0, 0, 0.8);
 }
