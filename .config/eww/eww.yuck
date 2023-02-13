@@ -3,6 +3,7 @@
     :space-evenly false
     (leftside
       :class "leftside"
+      (workspaces :monitor 0)
       (ws-layout-0))
     (music)
     (sidestuff)))
@@ -12,6 +13,7 @@
     :space-evenly false
     (leftside
       :class "leftside"
+      (workspaces :monitor 1)
       (ws-layout-1))
     (music)
     (sidestuff)))
@@ -26,7 +28,6 @@
 
 (defwidget leftside [class]
   (box :class class :orientation "h" :space-evenly false :halign "start"
-    (workspaces)
     (children)))
 
 
@@ -68,7 +69,7 @@
 
 ; eww is natively able to parse the JSON output of `leftwm-state`
 ; since eww also has the ability of `for` loops there is no need for a `liquid` template anymore
-(defwidget workspaces []
+(defwidget workspaces [monitor]
   (eventbox :class "workspaces"
     :orientation "h"
     :space-evenly true
@@ -82,8 +83,8 @@
           tag.visible ? "ws-button-visible" :
           tag.urgent ? "ws-button-urgent" :
           tag.busy ? "ws-button-busy" : "ws-button"}
-          :onclick "leftwm-command \"SendWorkspaceToTag 0 ${tag.index}\""
-          :onrightclick "leftwm-command \"SendWorkspaceToTag 1 ${tag.index}\""
+          :onclick "leftwm-command \"SendWorkspaceToTag ${monitor} ${tag.index}\""
+          :onrightclick "leftwm-command \"SendWorkspaceToTag ${music != 0 ? 1 : 0} ${tag.index}\""
         "${tag.name}")))))
 
 (defwidget music []
@@ -122,8 +123,10 @@
       :value value
     :onchange onchange)))
 
+(defpoll date :interval "10s"
+"date '%b %d, %Y'")
 (defpoll time :interval "10s"
-"date '+%H:%M %b %d, %Y'")
+"date '+%H:%M'")
 
 (deflisten wmstate
   :initial '{"workspaces":[{"layout":"","tags":[{"name":"","index":0,"mine":false,"busy":false,"visible":false,"urgent":false}]}]}'

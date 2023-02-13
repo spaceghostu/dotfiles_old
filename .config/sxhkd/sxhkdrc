@@ -7,5 +7,22 @@ super + shift + o
 super + Escape
 	pkill -USR1 -x sxhkd
 
-super + t
-    kitty
+super + alt + p
+    dotfiles code ~/.config
+
+super + e
+    thunar
+
+super + control + button4
+    leftwm-command "FocusPreviousTag"
+
+super + control + button5
+    leftwm-command "FocusNextTag" 
+
+
+super + button4
+    leftwm-command "IncreaseMainWidth 1"
+
+super + button5
+    leftwm-command "DecreaseMainWidth 1" 
+

@@ -13,15 +13,15 @@
     mousekey: "Mod4",
     workspaces: [],
     tags: [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
+        "term",
+        "web",
+        "dev",
+        "code",
+        "chat",
+        "files",
         "7",
-        "8",
-        "9",
+        "sys",
+        "vid",
     ],
     max_window_width: None,
     layouts: [
@@ -43,7 +43,8 @@
     layout_mode: Tag,
     insert_behavior: Bottom,
     scratchpad: [
-        (name: "Kitty", value: "kitty", x: 860, y: 390, height: 300, width: 300),
+        (name: "Kitty", value: "kitty",  x: 0, y: 0, height: 1080, width: 1920),
+        (name: "Leafpad", value: "leafpad", x: 0, y: 0, height: 1080, width: 1920),
     ],
     window_rules: [],
     disable_current_tag_swap: false,
@@ -55,7 +56,8 @@
     sloppy_mouse_follows_focus: true,
     auto_derive_workspaces: true,
     keybind: [
-        (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "p"),
+        (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "Return"),
+        (command: ToggleScratchPad, value: "Leafpad", modifier: ["modkey", "Shift"], key: "l"),
         (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "kitty", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
@@ -99,6 +101,9 @@
         (command: MoveToTag, value: "7", modifier: ["modkey", "Shift"], key: "7"),
         (command: MoveToTag, value: "8", modifier: ["modkey", "Shift"], key: "8"),
         (command: MoveToTag, value: "9", modifier: ["modkey", "Shift"], key: "9"),
+        (command: IncreaseMainWidth, value: "1", modifier: ["modkey", "Control"], key: "Right"),
+        (command: DecreaseMainWidth, value: "1", modifier: ["modkey", "Control"], key: "Left")
+        
     ],
     state_path: None,
 )

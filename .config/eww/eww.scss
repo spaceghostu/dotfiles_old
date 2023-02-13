@@ -1,4 +1,13 @@
-$primary: #86abc7;
+$primary: #79afd2;
+$primary-dark: #254a49;
+$primary-dark-contrast: #c9ddec;
+$accent-contrast: #eeebdf;
+$accent: #796f48;
+
+$bg: #121d25;
+$bg-lighter-contrast: #e1e7ee;
+$bg-lighter: #283a47;
+$bg-darker: #060a0c;
 
 * {
   all: unset;
@@ -7,7 +16,7 @@ $primary: #86abc7;
 //Global Styles
 .bar0,
 .bar1 {
-  background-color: #3a3a3a;
+  background-color: $bg;
   color: #b0b4bc;
 }
 
@@ -49,17 +58,21 @@ $primary: #86abc7;
   margin-right: 20px;
 }
 .label {
+  font-family: "Font Awesome 6 Free";
 }
 .label-ram {
   font-size: large;
 }
 .time {
-  margin-right: 30px;
+  font-weight: bold;
+  background-color: $bg-lighter;
+  color: #fff;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 15px;
 }
 .git {
   margin-right: 30px;
-}
-.workspaces {
 }
 .workspaces button {
   font-size: 14px;
@@ -70,16 +83,16 @@ $primary: #86abc7;
   color: $primary;
 }
 .ws-button-focused {
-  color: #4e4e4e;
-  background-color: #ffd5ca;
+  color: $accent-contrast;
+  background-color: $accent;
 }
 .ws-button-visible {
   color: $primary;
-  background-color: #4e4e4e;
+  background-color: $bg-lighter;
 }
 .ws-button-urgent {
-  color: #ffd5ca;
-  background-color: $primary;
+  color: red;
+  background-color: $bg-lighter;
 }
 .ws-button-busy {
   color: $primary;
@@ -99,8 +112,13 @@ $primary: #86abc7;
   
 }
 
-.layout, .workspaces {
-  margin-left: 20px;
-  padding-left: 20px;
-  border-left: 1px solid gray;
+.workspaces {
+  padding-left: 10px;
+}
+
+.layout {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:  $bg-lighter;
+  color: $bg-lighter-contrast;
 }
