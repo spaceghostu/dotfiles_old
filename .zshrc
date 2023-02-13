@@ -128,6 +128,7 @@ alias dgit="dots git"
 alias dstatus="dots git status"
 alias dadd="dots git add -f"
 alias dcommit="dots git commit -m"
+alias dpush="dots git push"
 alias dcode="dots code ~/.config"
 
 alias gs-rhw="GIT_WORK_TREE=/home/calvin/dev/react-heardigits-widget GIT_DIR=/home/calvin/dev/react-heardigits-widget/.git git status"
