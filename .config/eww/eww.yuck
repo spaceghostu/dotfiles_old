@@ -41,7 +41,7 @@
     (metric :label ""
       :value '${EWW_RAM.used_mem_perc}'
     :onchange "")
-    (metric :label ""
+    (metric :label ""
       :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
     :onchange "")
     (time)))
@@ -85,7 +85,15 @@
           tag.busy ? "ws-button-busy" : "ws-button"}
           :onclick "leftwm-command \"SendWorkspaceToTag ${monitor} ${tag.index}\""
           :onrightclick "leftwm-command \"SendWorkspaceToTag ${music != 0 ? 1 : 0} ${tag.index}\""
-        "${tag.name}")))))
+          {tag.name == "term" ? "" :
+          tag.name == "web" ? "" :
+          tag.name == "dev" ? "" :
+          tag.name == "code" ? "" :
+          tag.name == "chat" ? "" :
+          tag.name == "files" ? (tag.focused ? "" : "") :
+          tag.name == "7" ? "" :
+          tag.name == "sys" ? "" :
+        tag.name == "vid" ? "" : "${tag.name}"})))))
 
 (defwidget music []
   (box :class "music"

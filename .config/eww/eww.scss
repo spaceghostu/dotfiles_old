@@ -5,10 +5,27 @@ $primary-dark-contrast: #c9ddec;
 $accent-contrast: rgba(0, 0, 0, 0.8);
 $accent: #ece3a8;
 
+$fg: rgba(202, 222, 236, 0.9);
+$fg-dim: rgba(202, 222, 236, 0.2);
 $bg: #2b2c2e;
 $bg-lighter-contrast: #e3e8ed;
-$bg-darker: #181a1a;
+$bg-darker: #557272;
 $bg-lighter: #7c8a8f;
+
+$focused-bg: #acbfcc;
+$focused-fg: #203f58;
+
+$visible-bg: #6f8391;
+$visible-fg: $fg;
+
+$urgent-bg: #b23a51;
+$urgent-fg: $fg;
+
+$busy-bg: $bg;
+$busy-fg: $fg;
+
+$empty-bg: $bg;
+$empty-fg: $fg-dim;
 
 * {
   all: unset;
@@ -79,27 +96,30 @@ $bg-lighter: #7c8a8f;
   font-size: 14px;
   padding-left: 6px;
   padding-right: 6px;
+  font-family: "Font Awesome 6 Free";
+  font-size: 14px;
 }
 .workspaces button:hover {
   color: $primary;
 }
 .ws-button-focused {
-  color: $accent-contrast;
-  background-color: $accent;
+  color: $focused-fg;
+  background-color: $focused-bg;
 }
 .ws-button-visible {
-  color: rgba(0, 0, 0, 0.8);
-  background-color: #5795b6;
+  color: $visible-fg;
+  background-color: $visible-bg;
 }
 .ws-button-urgent {
-  color: red;
-  background-color: $bg-darker;
+  color: $urgent-fg;
+  background-color: $urgent-bg;
 }
 .ws-button-busy {
-  color: $primary;
+  color: $busy-fg;
+  background-color: $busy-bg;
 }
 .ws-button {
-  color: #b0b4bc;
+  color: $empty-fg;
 }
 
 
