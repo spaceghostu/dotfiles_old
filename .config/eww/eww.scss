@@ -10,6 +10,7 @@ $fg-dim: rgba(202, 222, 236, 0.2);
 $bg: #2b2c2e;
 $bg-lighter-contrast: #e3e8ed;
 $bg-darker: #557272;
+$bg-darkest: #243131;
 $bg-lighter: #7c8a8f;
 
 $focused-bg: #acbfcc;
@@ -88,6 +89,14 @@ $empty-fg: $fg-dim;
   padding-left: 5px;
   padding-right: 5px;
   font-size: 15px;
+}
+.date {
+  font-weight: normal;
+  background-color: $bg;
+  color: $bg-lighter;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
 }
 .git {
   margin-right: 30px;
