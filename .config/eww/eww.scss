@@ -148,14 +148,15 @@ $empty-fg: $fg-dim;
 }
 
 .layout {
-  margin-left: 10px;
+  // margin-left: 1px;
   padding-left: 10px;
   padding-right: 10px;
-  background-color:  #709e99;
+  background-color:  #7f9e9b;
   color: rgba(0, 0, 0, 0.8);
 }
 
 .wmtitle {
   padding-left: 10px;
+  color:  #86abc7;
   padding-right: 10px;
 }
