@@ -28,7 +28,8 @@
 
 (defwidget leftside [class]
   (box :class class :orientation "h" :space-evenly false :halign "start"
-    (children)))
+    (children)
+    (wmtitle)))
 
 
 (defwidget sidestuff []
@@ -139,6 +140,9 @@
 (deflisten wmstate
   :initial '{"workspaces":[{"layout":"","tags":[{"name":"","index":0,"mine":false,"busy":false,"visible":false,"urgent":false}]}]}'
 "leftwm state")
+
+(defwidget wmtitle []
+  (box :class "wmtitle" {wmstate.window_title}))
 
 (defwindow bar0
   :monitor 0
