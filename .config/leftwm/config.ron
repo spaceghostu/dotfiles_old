@@ -58,7 +58,7 @@
     keybind: [
         (command: ToggleScratchPad, value: "Kitty", modifier: ["modkey", "Shift"], key: "Return"),
         (command: ToggleScratchPad, value: "Leafpad", modifier: ["modkey", "Shift"], key: "l"),
-        (command: Execute, value: "rofi -show drun", modifier: ["modkey"], key: "p"),
+        (command: Execute, value: "sh ~/.config/rofi/launchers/type-6/launcher.sh", modifier: ["modkey"], key: "p"),
         (command: Execute, value: "kitty", modifier: ["modkey"], key: "Return"),
         (command: CloseWindow, value: "", modifier: ["modkey"], key: "q"),
         (command: SoftReload, value: "", modifier: ["modkey", "Shift"], key: "r"),

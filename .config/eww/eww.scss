@@ -135,9 +135,11 @@ $empty-fg: $fg-dim;
 
 .workspaces {
   padding-left: 10px;
+  -right: 10px;
 }
 
 .layout {
+  margin-left: 10px;
   padding-left: 10px;
   padding-right: 10px;
   background-color:  #709e99;
