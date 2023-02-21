@@ -15,6 +15,7 @@ $bg-lighter: #7c8a8f;
 
 $focused-bg: #acbfcc;
 $focused-fg: #203f58;
+$focused-fg-lighter: #647f94;
 
 $visible-bg: #6f8391;
 $visible-fg: $fg;
@@ -115,6 +116,9 @@ $empty-fg: $fg-dim;
   color: $focused-fg;
   background-color: $focused-bg;
 }
+button.ws-button-focused:hover {
+  color: $focused-fg-lighter;
+}
 .ws-button-visible {
   color: $visible-fg;
   background-color: $visible-bg;
@@ -157,6 +161,94 @@ $empty-fg: $fg-dim;
 
 .wmtitle {
   padding-left: 10px;
-  color:  #86abc7;
+  color:  #a7b6c2;
   padding-right: 10px;
+}
+
+
+/** System ********************************************/
+.volume {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.iconcpu, .iconmem, .iconbright, .iconbat {
+	font-size : 14px;
+	font-weight : normal;
+}
+.iconcpu {
+	color: #bd787f;
+}
+.iconmem {
+	color: #e7cf9e;
+}
+.iconbright {
+	color: #a5bb92;
+}
+.iconbat {
+	color: #a4a1ce;
+}
+.icon_notcharging {
+  color: red;
+}
+.iconvol {
+	color: #9dd1d1;
+}
+
+.bar scale trough {
+	all: unset;
+	min-height: 2px;
+	min-width: 50px;
+	background-color: #2c3038;
+}
+
+.graph {
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+
+$cpu-color: #bd787f;
+$mem-color: #e7cf9e;
+$bright-color: #a5bb92;
+$bat-color: #a4a1ce;
+$vol-color: #9dd1d1;
+
+
+
+.cpu_graph .graph {
+	color: $cpu-color;
+}
+.cpu_graph .bar scale trough highlight {
+	background-color: $cpu-color;
+}
+.mem_graph .graph {
+	color: $mem-color;
+}
+.mem_graph .bar scale trough highlight {
+	background-color: $mem-color;
+}
+.bat_graph .graph {
+	color: $bat-color;
+}
+.bat_graph .bar scale trough highlight {
+	background-color: $bat-color;
+}
+
+.vol_bar scale trough {
+	all: unset;
+	background-color: #3A404C;
+	min-height: 6px;
+	min-width: 50px;
+  border-radius: 999px;
+}
+
+.vol_bar {
+  min-width: 50px;
+}
+.vol_bar scale trough highlight {
+	all: unset;
+  border-radius: 999px;
+}
+
+.vol_bar scale trough highlight {
+	background-color: #9dd1d1;
 }

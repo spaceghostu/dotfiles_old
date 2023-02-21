@@ -36,15 +36,8 @@
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     ; (_buttons)
     (dotfiles)
-    (metric :label "🔊"
-      :value volume
-    :onchange "amixer -D default sset Master {}%")
-    (metric :label ""
-      :value '${EWW_RAM.used_mem_perc}'
-    :onchange "")
-    (metric :label ""
-      :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-    :onchange "")
+    (system_graphs)
+    (volume)
     (time)
     (date)))
 
@@ -93,7 +86,7 @@
           tag.name == "code" ? "" :
           tag.name == "chat" ? "" :
           tag.name == "files" ? (tag.focused ? "" : "") :
-          tag.name == "7" ? "" :
+          tag.name == "admin" ? (tag.focused ? "" : "") :
           tag.name == "sys" ? "" :
         tag.name == "vid" ? "" : "${tag.name}"})))))
 
@@ -112,6 +105,71 @@
   (box :class "time" {time}))
 (defwidget date []
   (box :class "date" {date}))
+
+;; System vars
+(defpoll HOST :interval "5s" `hostname`)
+(defpoll CPU_USAGE :interval "1s" `scripts/sys_info --cpu`)
+(defpoll MEM_USAGE :interval "1s" `scripts/sys_info --mem`)
+(defpoll BLIGHT :interval "1s" `scripts/sys_info --blight`)
+(defpoll BATTERY :interval "5s" `scripts/sys_info --bat`)
+(defpoll BATTERY_STATUS :interval "5s" `scripts/sys_info --bat-status`)
+(defpoll RANDOM :interval "1s" `shuf -i 1-100 -n 1`)
+;; system
+(defwidget system []
+  (box :class "system" :vexpand "false" :hexpand "false"
+    (box :orientation "h" :spacing 10 :halign "center" :valign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
+      (box :class "cpu_bar" :orientation "h" :spacing 3 :space-evenly "false" :vexpand "false" :hexpand "false"
+        ; (label :class "iconcpu" :text "")
+        (scale :min 0 :max 100 :value CPU_USAGE :active "false"))
+      (box :class "mem_bar" :orientation "h" :spacing 3 :space-evenly "false" :vexpand "false" :hexpand "false"
+        ; (label :class "iconmem" :text "")
+        (scale :min 0 :max 100 :value MEM_USAGE :active "false"))
+      (box :class "bright_bar" :orientation "h" :spacing 3 :space-evenly "false" :vexpand "false" :hexpand "false"
+        ; (label :class "iconbright" :text "")
+        (scale :min 0 :max 100 :value BLIGHT :active "false"))
+      (box :class {BATTERY < 50 ? "bat_bar -verylow" : BATTERY < 25 ? "bat_bar -low" : "bat_bar"} :orientation "h" :spacing 8 :space-evenly "false" :vexpand "true" :hexpand "false"
+        (label :class "icon_notcharging" :text {BATTERY_STATUS == 'Charging' ? "" : ""})
+        (label :class "bat_label" :text {BATTERY})
+        (graph :class "bat_graph" :min 0 :max 100 :value BATTERY :thickness 2 :time-range 1 :active "false")
+        ; (scale :min 0 :max 100 :value BATTERY :active "false")
+      ))))
+(defwidget system_graphs []
+  (box :class "system" :vexpand "false" :hexpand "false"
+    (box :orientation "h" :spacing 10 :halign "stretch"
+      (scale_and_graph :class "cpu_graph" :value CPU_USAGE :visible true)
+      (scale_and_graph :class "mem_graph" :value MEM_USAGE :visible true)
+      (scale_and_graph :class "bat_graph" :value BATTERY :visible {BATTERY < 90})
+    )))
+
+(defwidget scale_and_graph [value class visible]
+  (box :class class :orientation "v" :space-evenly "false" :visible {visible}
+    (graph :class "graph" :line-style "miter" :width 50 :min 0 :max 100 :value value :thickness 2 :vexpand "true" :time-range "30s")
+    (box :class "bar" :orientation "h" :spacing 3 :space-evenly "false" :vexpand "false" :hexpand "false"
+      (scale :min 0 :max 100 :value value :active "false"))
+  ))
+
+
+;; Volume vars
+(defpoll VOLUME :interval "1s" `pamixer --get-volume`)
+;; volume
+(defwidget volume []
+  (box :class "volume" :vexpand "false" :hexpand "false"
+    (eventbox
+      :orientation "h"
+      :spacing 10
+      :halign "center"
+      :valign "center"
+      :space-evenly "false"
+      :vexpand "false"
+      :hexpand "false"
+      :onscroll "scripts/volume --scroll {}"
+      (box :class "vol_bar" :spacing 5 :orientation "h" :space-evenly "false" :vexpand "false" :hexpand "false"
+        (label :class "iconvol" :text "")
+        (scale
+          :min 0
+          :max 100
+          :value VOLUME
+        :active "false")))))
 
 
 (deflisten music :initial ""
@@ -168,3 +226,4 @@
   :anchor "top center")
   :reserve (struts :side "top" :distance "25px")
   (bar1))
+
